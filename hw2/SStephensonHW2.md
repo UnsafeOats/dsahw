@@ -1,6 +1,8 @@
 # Homework 2
 Shane Stephenson - 06/12/2023
 
+All code used in this assignment and the markdown files used to build this assignment can be found in GitHub [<u>_here_</u>](https://github.com/UnsafeOats/dsahw/tree/master/hw2).
+
 # Problems
 ## 1a
 Pseudo-code implementation:
@@ -19,6 +21,7 @@ FUNCTION INPUTS i: element, s: stack -> OUTPUT stack
 
   RETURN s
 ```
+\newpage
 
 ## 1b
 Pseudo-code implementation:
@@ -40,6 +43,7 @@ FUNCTION INPUTS i: element, s: stack -> OUTPUT stack
   RETURN s
 ```
 
+\newpage
 ## 2a
 The below table represents each character as it's being iterated over, what the stack looks like, and any stack operation that is being applied:
 
@@ -47,22 +51,23 @@ The below table represents each character as it's being iterated over, what the 
 |---------+-----+---------------|
 |{        |{    |Push '{'       |
 |[        |[{   |Push '['       |
-|A        |[{   |               |
-|+        |[{   |               |
-|B        |[{   |               |
+|A        |[{   |None           |
+|+        |[{   |None           |
+|B        |[{   |None           |
 |]        |{    |Pop '['        |
-|-        |{    |               |
+|-        |{    |None           |
 |[        |[{   |Push '['       |
 |(        |([{  |Push '('       |
-|C        |([{  |               |
-|-        |([{  |               |
-|D        |([{  |               |
+|C        |([{  |None           |
+|-        |([{  |None           |
+|D        |([{  |None           |
 |)        |[{   |Pop '('        |
 |]        |{    |Pop '['        |
-|END      |{    |IS EMPTY       |
+|END      |{    |Check empty    |
 
 After iterating through all characters, stack is non-empty so delimiters are not properly matching.
 
+\newpage
 ## 2b
 The below table represents each character as it's being iterated over, what the stack looks like, and any stack operation that is being applied:
 
@@ -70,23 +75,24 @@ The below table represents each character as it's being iterated over, what the 
 |---------+-----+---------------|
 |(        |(    |Push '('       |
 |(        |((   |Push '('       |
-|H        |((   |               |
+|H        |((   |None           |
 |)        |(    |Pop '('        |
-|\*        |(    |               |
+|\*        |(    |None           |
 |{        |{(   |Push '{'       |
-|(        |({(  |               |
+|(        |({(  |None           |
 |[        |[({( |Push '['       |
-|J        |[({( |               |
-|+        |[({( |               |
-|K        |[({( |               |
+|J        |[({( |None           |
+|+        |[({( |None           |
+|K        |[({( |None           |
 |]        |({(  |Pop '['        |
 |)        |{(   |Pop '('        |
 |}        |(    |Pop '{'        |
 |)        |     |Pop '('        |
-|END      |     |IS EMPTY       |
+|END      |     |Check empty    |
 
 After iterating through all characters, stack is empty so delimiters are properly matching.
 
+\newpage
 ## 3
 Pseudo-code implementation checking mirrored strings:
 ```
@@ -148,6 +154,7 @@ if __name__ == "__main__":
     assert check_mirrored('xyyzaCazyyu') == False
 ```
 
+\newpage
 ## 4
 
 The below code is a slight modification and extension of the above code.  For this implementation, we use two stacks.  One stack collects everything inbetween the 'D's (the 'D-segments') and the second stack is used within the function to test if the extracted D-segment sequence stack represents a valid xCy mirrored string.  Again, test strings are asserted at the end.
@@ -205,6 +212,7 @@ if __name__ == "__main__":
     assert check_each_section('xyyzaCazyyxDxyyzaCazyyu') == False
 ```
 
+\newpage
 ## 5
 For this, I'll be using the same Stack class defined above and simply extending it with a method for inserting an element in the stack and reading an element within the stack.  For this example, we'll implement it so that the elements are indexed from oldest (bottom of stack) as 0 to newest (top of stack) as stack length.
 ```python
@@ -272,3 +280,5 @@ if __name__ == "__main__":
     assert stack.read(4) == 'a'
     assert stack.read(5) == 'z'
 ```
+
+\newpage
