@@ -5,105 +5,107 @@ Shane Stephenson - 06/12/2023
 ## 1a
 Pseudo-code implementation:
 ```
-INPUTS i: element, s: stack -> stack
-# stack s is the input stack and i is the element to place at bottom
-LET s_0 = INITIALIZE EMPTY STACK
+FN INPUTS i: element, s: stack -> OUTPUT stack
+  # stack s is the input stack and i is the element to place at bottom
+  LET s_0 = INITIALIZE EMPTY STACK
 
-WHILE s IS NOT EMPTY:
-    s_0.push(s.pop) # pop from one stack and immediately move to second stack
+  WHILE s IS NOT EMPTY:
+      s_0.push(s.pop) # pop from one stack and immediately move to second stack
 
-s.push(i)
+  s.push(i)
 
-WHILE s_0 IS NOT EMPTY:
-    s.push(s.pop)
+  WHILE s_0 IS NOT EMPTY:
+      s.push(s.pop)
 
-RETURN s
+  RETURN s
 ```
 
 ## 1b
 Pseudo-code implementation:
 ```
-INPUTS i: element, s: stack -> stack
-# stack s is the input stack and i is the element to place in the third position
-LET s_0 = INITIALIZE EMPTY STACK
+FN INPUTS i: element, s: stack -> OUTPUT stack
+  # stack s is the input stack and i is the element to place in the third position
+  LET s_0 = INITIALIZE EMPTY STACK
 
-WHILE s IS NOT EMPTY:
-    s_0.push(s.pop) # pop from one stack and immediately move to second stack
+  WHILE s IS NOT EMPTY:
+      s_0.push(s.pop) # pop from one stack and immediately move to second stack
 
-s.push(s_0.pop)
-s.push(s_0.pop)
-s.push(i)
+  s.push(s_0.pop)
+  s.push(s_0.pop)
+  s.push(i)
 
-WHILE s_0 IS NOT EMPTY:
-    s.push(s_0.pop)
+  WHILE s_0 IS NOT EMPTY:
+      s.push(s_0.pop)
 
-RETURN s
+  RETURN s
 ```
 
 ## 2a
 The below table represents each character as it's being iterated over, what the stack looks like, and any stack operation that is being applied:
-| Character   | Stack     | Stack Operation |
-|-------------|-----------|-----------------|
-|{            |{          |Push '{'         |
-|[            |[{         |Push '['         |
-|A            |[{         |                 |
-|+            |[{         |                 |
-|B            |[{         |                 |
-|]            |{          |Pop '['          |
-|-            |{          |                 |
-|[            |[{         |Push '['         |
-|(            |([{        |Push '('         |
-|C            |([{        |                 |
-|-            |([{        |                 |
-|D            |([{        |                 |
-|)            |[{         |Pop '('          |
-|]            |{          |Pop '['          |
-|END          |{          |IS EMPTY         |
+
+|Character|Stack|Stack Operation|
+|----------+------+-------------|
+|{         |{   |Push '{'       |
+|[         |[{  |Push '['       |
+|A         |[{  |               |
+|+         |[{  |               |
+|B         |[{  |               |
+|]         |{   |Pop '['        |
+|-         |{   |               |
+|[         |[{  |Push '['       |
+|(         |([{ |Push '('       |
+|C         |([{ |               |
+|-         |([{ |               |
+|D         |([{ |               |
+|)         |[{  |Pop '('        |
+|]         |{   |Pop '['        |
+|END       |{   |IS EMPTY       |
 
 After iterating through all characters, stack is non-empty so delimiters are not properly matching.
 
 ## 2b
 The below table represents each character as it's being iterated over, what the stack looks like, and any stack operation that is being applied:
-| Character   | Stack     | Stack Operation |
-|-------------|-----------|-----------------|
-|(            |(          |Push '('         |
-|(            |((         |Push '('         |
-|H            |((         |                 |
-|)            |(          |Pop '('          |
-|**+            |(          |                 |
-|{            |{(         |Push '{'         |
-|(            |({(        |                 |
-|[            |[({(       |Push '['         |
-|J            |[({(       |                 |
-|+            |[({(       |                 |
-|K            |[({(       |                 |
-|]            |({(        |Pop '['          |
-|)            |{(         |Pop '('          |
-|}            |(          |Pop '{'          |
-|)            |           |Pop '('          |
-|END          |           |IS EMPTY         |
+
+|Character|Stack|Stack Operation|
+|---------+-----+---------------|
+|(        |(    |Push '('       |
+|(        |((   |Push '('       |
+|H        |((   |               |
+|)        |(    |Pop '('        |
+|\*        |(    |               |
+|{        |{(   |Push '{'       |
+|(        |({(  |               |
+|[        |[({( |Push '['       |
+|J        |[({( |               |
+|+        |[({( |               |
+|K        |[({( |               |
+|]        |({(  |Pop '['        |
+|)        |{(   |Pop '('        |
+|}        |(    |Pop '{'        |
+|)        |     |Pop '('        |
+|END      |     |IS EMPTY       |
 
 After iterating through all characters, stack is empty so delimiters are properly matching.
 
 ## 3
 Pseudo-code implementation checking mirrored strings:
 ```
-INPUTS w: string -> bool
-# string w is input string of format xCy
-LET stack = INITIALIZE EMPTY STACK
-LET found_c = FALSE
-LET output = TRUE
+FN INPUTS w: string -> OUTPUT bool
+  # string w is input string of format xCy
+  LET stack = INITIALIZE EMPTY STACK
+  LET found_c = FALSE
+  LET output = TRUE
 
-FOR char IN w:
-  IF NOT found_c AND char != 'C':
-    stack.push(char)
-  ELSE IF char == 'C':
-    LET found_c = TRUE
-  ELSE:
-    IF stack.pop != char:
-      LET output = FALSE
+  FOR char IN w:
+    IF NOT found_c AND char != 'C':
+      stack.push(char)
+    ELSE IF char == 'C':
+      LET found_c = TRUE
+    ELSE:
+      IF stack.pop != char:
+        LET output = FALSE
 
-RETURN output
+  RETURN output
 ```
 A Python implementation of the above algorithm with some test cases is as follows.  As these problems start to require more modular code, it becomes easier for me to just write the code in Python than writing consistent pseudo-code:
 ```python
