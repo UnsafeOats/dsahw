@@ -3,6 +3,7 @@ Shane Stephenson - 06/12/2023
 
 # Problems
 ## 1a
+Pseudo-code implementation:
 ```
 INPUTS i: element, s: stack -> stack
 # stack s is the input stack and i is the element to place at bottom
@@ -20,6 +21,7 @@ RETURN s
 ```
 
 ## 1b
+Pseudo-code implementation:
 ```
 INPUTS i: element, s: stack -> stack
 # stack s is the input stack and i is the element to place in the third position
@@ -39,6 +41,7 @@ RETURN s
 ```
 
 ## 2a
+The below table represents each character as it's being iterated over, what the stack looks like, and any stack operation that is being applied:
 | Character   | Stack     | Stack Operation |
 |-------------|-----------|-----------------|
 |{            |{          |Push '{'         |
@@ -60,6 +63,7 @@ RETURN s
 After iterating through all characters, stack is non-empty so delimiters are not properly matching.
 
 ## 2b
+The below table represents each character as it's being iterated over, what the stack looks like, and any stack operation that is being applied:
 | Character   | Stack     | Stack Operation |
 |-------------|-----------|-----------------|
 |(            |(          |Push '('         |
@@ -82,6 +86,7 @@ After iterating through all characters, stack is non-empty so delimiters are not
 After iterating through all characters, stack is empty so delimiters are properly matching.
 
 ## 3
+Pseudo-code implementation checking mirrored strings:
 ```
 INPUTS w: string -> bool
 # string w is input string of format xCy
@@ -100,8 +105,7 @@ FOR char IN w:
 
 RETURN output
 ```
-
-A Python implementation of the above algorithm with some test cases is as follows:
+A Python implementation of the above algorithm with some test cases is as follows.  As these problems start to require more modular code, it becomes easier for me to just write the code in Python than writing consistent pseudo-code:
 ```python
 class Stack(list):
     # This is just a wrapper class around Python lists to so that we can interact
