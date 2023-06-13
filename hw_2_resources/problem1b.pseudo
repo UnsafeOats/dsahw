@@ -1,0 +1,15 @@
+FUNCTION INPUTS i: element, s: stack -> OUTPUT stack
+  # stack s is the input stack and i is the element to place in the third position
+  LET s_0 = INITIALIZE EMPTY STACK
+
+  WHILE s IS NOT EMPTY:
+      s_0.push(s.pop) # pop from one stack and immediately move to second stack
+
+  s.push(s_0.pop)
+  s.push(s_0.pop)
+  s.push(i)
+
+  WHILE s_0 IS NOT EMPTY:
+      s.push(s_0.pop)
+
+  RETURN s

@@ -12,6 +12,11 @@ class Stack(list):
         return self[-1]
 
     def insert(self, item, index: int) -> 'Stack':
+        # This implementation of insert works by popping every item
+        # from the stack and onto a secondary stack until the number
+        # of items popped is equal to the index. Then the item is 
+        # popped onto the stack and then all additional items from
+        # the secondary stack are popped back onto the original stack.
         secondary_stack = Stack()
         for _ in range(index):
             secondary_stack.push(self.pop())
@@ -21,6 +26,10 @@ class Stack(list):
         return self
 
     def read(self, index: int):
+        # This implementation works the same way that the `insert` method
+        # above works, except when the index is reached the stack head is peeked.
+        # Once all items are moved back onto the original stack from the
+        # secondary stack, the peeked item is returned.
         secondary_stack = Stack()
         for _ in range(index):
             secondary_stack.push(self.pop())

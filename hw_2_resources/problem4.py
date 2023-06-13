@@ -15,7 +15,6 @@ class Stack(list):
 def check_mirrored(s: Stack) -> bool:
     stack = Stack()
     found_c = False
-    output = True
     for char in s:
         if (not found_c) and (char != 'C'):
             stack.push(char)
@@ -23,21 +22,20 @@ def check_mirrored(s: Stack) -> bool:
             found_c = True
         else:
             if stack.pop() != char:
-                output = False
-    return output and stack.is_empty() # using 'and' here to validate stack is empty
+                return False
+    return stack.is_empty() # Need to ensure stack is empty after popping all matching elements
 
 
 def check_each_section(s: str) -> bool:
     section_stack = Stack()
-    output = True
     for char in s:
         if char != 'D':
             section_stack.push(char)
         else:
             if not check_mirrored(section_stack):
-                output = False
+                return False
             section_stack = Stack()
-    return output and check_mirrored(section_stack) # using 'and' section here to validate final section is truly mirrored
+    return check_mirrored(section_stack) # Need to check last D-segment
 
 
 if __name__ == "__main__":

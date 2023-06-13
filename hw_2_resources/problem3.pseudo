@@ -1,0 +1,17 @@
+FUNCTION INPUTS w: string -> OUTPUT bool
+  # string w is input string of format xCy
+  LET stack = INITIALIZE EMPTY STACK
+  LET found_c = FALSE
+  LET output = TRUE
+
+  FOR char IN w:
+    IF NOT found_c AND char != 'C':
+      stack.push(char)
+    ELSE IF char == 'C':
+      LET found_c = TRUE
+    ELSE:
+      IF stack.pop != char:
+        LET output = FALSE
+
+  RETURN output
+
