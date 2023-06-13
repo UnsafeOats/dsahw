@@ -5,7 +5,7 @@ Shane Stephenson - 06/12/2023
 ## 1a
 Pseudo-code implementation:
 ```
-FN INPUTS i: element, s: stack -> OUTPUT stack
+FUNCTION INPUTS i: element, s: stack -> OUTPUT stack
   # stack s is the input stack and i is the element to place at bottom
   LET s_0 = INITIALIZE EMPTY STACK
 
@@ -23,7 +23,7 @@ FN INPUTS i: element, s: stack -> OUTPUT stack
 ## 1b
 Pseudo-code implementation:
 ```
-FN INPUTS i: element, s: stack -> OUTPUT stack
+FUNCTION INPUTS i: element, s: stack -> OUTPUT stack
   # stack s is the input stack and i is the element to place in the third position
   LET s_0 = INITIALIZE EMPTY STACK
 
@@ -44,22 +44,22 @@ FN INPUTS i: element, s: stack -> OUTPUT stack
 The below table represents each character as it's being iterated over, what the stack looks like, and any stack operation that is being applied:
 
 |Character|Stack|Stack Operation|
-|----------+------+-------------|
-|{         |{   |Push '{'       |
-|[         |[{  |Push '['       |
-|A         |[{  |               |
-|+         |[{  |               |
-|B         |[{  |               |
-|]         |{   |Pop '['        |
-|-         |{   |               |
-|[         |[{  |Push '['       |
-|(         |([{ |Push '('       |
-|C         |([{ |               |
-|-         |([{ |               |
-|D         |([{ |               |
-|)         |[{  |Pop '('        |
-|]         |{   |Pop '['        |
-|END       |{   |IS EMPTY       |
+|---------+-----+---------------|
+|{        |{    |Push '{'       |
+|[        |[{   |Push '['       |
+|A        |[{   |               |
+|+        |[{   |               |
+|B        |[{   |               |
+|]        |{    |Pop '['        |
+|-        |{    |               |
+|[        |[{   |Push '['       |
+|(        |([{  |Push '('       |
+|C        |([{  |               |
+|-        |([{  |               |
+|D        |([{  |               |
+|)        |[{   |Pop '('        |
+|]        |{    |Pop '['        |
+|END      |{    |IS EMPTY       |
 
 After iterating through all characters, stack is non-empty so delimiters are not properly matching.
 
@@ -90,7 +90,7 @@ After iterating through all characters, stack is empty so delimiters are properl
 ## 3
 Pseudo-code implementation checking mirrored strings:
 ```
-FN INPUTS w: string -> OUTPUT bool
+FUNCTION INPUTS w: string -> OUTPUT bool
   # string w is input string of format xCy
   LET stack = INITIALIZE EMPTY STACK
   LET found_c = FALSE
@@ -110,9 +110,9 @@ FN INPUTS w: string -> OUTPUT bool
 A Python implementation of the above algorithm with some test cases is as follows.  As these problems start to require more modular code, it becomes easier for me to just write the code in Python than writing consistent pseudo-code:
 ```python
 class Stack(list):
-    # This is just a wrapper class around Python lists to so that we can interact
-    # with the lists in a way that idiomatic of a stack with methods to push and check
-    # if the stack is empty.
+    # This is just a wrapper class around Python lists so that we can interact
+    # with the lists in a way that idiomatic of stack handling.  Basically,
+    # it's just a list with methods added to push to stack and check if stack is empty.
     def __init__(self):
         super().__init__()
 
@@ -150,7 +150,7 @@ if __name__ == "__main__":
 
 ## 4
 
-The below code is a slight modification and extension of the above code.  For this implementation, we use two stacks.  One stack collects everything inbetween the 'D's and the second stack is used within the function to test if the sequence in the D-segment stack is a valid xCy mirrored string.  Again, test strings are asserted at the end.
+The below code is a slight modification and extension of the above code.  For this implementation, we use two stacks.  One stack collects everything inbetween the 'D's (the 'D-segments') and the second stack is used within the function to test if the extracted D-segment sequence stack represents a valid xCy mirrored string.  Again, test strings are asserted at the end.
 ```python
 class Stack(list):
     # This is just a wrapper class around Python lists to so that we can interact
