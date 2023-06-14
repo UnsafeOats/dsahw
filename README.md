@@ -18,7 +18,7 @@ Once you've got your extended markdown file created, you can build the PDF by si
 ```console
 foo@bar: ~$ python3 build.py assignment_1
 ```
-The output name of the generated PDF will match the name of your markdown file.
+The output name of the generated PDF will match the name of your markdown file.  The output PDF file generated will be places in the `/assignments` folder in the project root directory.
 
 To get syntax highlighting on the pseudo-code, I told markdown to treat it like `lua`.  While it's definitely not optimal, it does make the pseudo-ccode look better than no syntax highlighting.
 ## Requirements
