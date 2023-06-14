@@ -1,0 +1,7 @@
+# Design a method for keeping two stacks within a single linear array
+# s[SPACESIZE] so that neither stack overflows until all of memory is used and an
+# entire stack is never shifted to a different location within the array. Write
+# methods push1, push2, pop1, and pop2 to manipulate the two stacks. (Hint:
+# the two stacks grow toward each other.)
+
+TODO!

@@ -1,0 +1,29 @@
+FUNCTION check_mirrored [input_stack: STACK] -> BOOLEAN
+START check_mirrored:
+  # stack inpt_stack is input stack representation with format xCy
+  LET stack = INITIALIZE EMPTY STACK
+  LET found_c = FALSE
+  WHILE NOT s.is_empty:
+    LET char = s.pop
+    IF NOT found_c AND char != 'C':
+      stack.push(char)
+    ELSE IF char == 'C':
+      LET found_c = TRUE
+    ELSE:
+      IF stack.pop != char:
+        RETURN FALSE
+  RETURN stack.is_empty
+END check_mirrored
+
+FUNCTION check_each_section [w: STRING] -> BOOLEAN
+START check_each_section:
+  LET section_stack = INITIALIZE EMPTY STACK
+  FOR char IN w:
+    IF char != 'D':
+      section_stack.push(char)
+    ELSE:
+      IF NOT check_mirrored(section_stack):
+        RETURN FALSE
+      LET section_stack = INITIALIZE EMPTY STACK
+  RETURN check_mirrored(section_stack)
+END check_each_section
