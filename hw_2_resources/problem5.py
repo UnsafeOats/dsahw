@@ -11,10 +11,10 @@ class Stack(list):
     def peek(self):
         return self[-1]
 
-    def insert(self, item, index: int) -> 'Stack':
+    def insert(self, item, index: int) -> "Stack":
         # This implementation of insert works by popping every item
         # from the stack and onto a secondary stack until the number
-        # of items popped is equal to the index. Then the item is 
+        # of items popped is equal to the index. Then the item is
         # popped onto the stack and then all additional items from
         # the secondary stack are popped back onto the original stack.
         secondary_stack = Stack()
@@ -43,30 +43,30 @@ if __name__ == "__main__":
     print("Running test cases...")
     # create the test stack Stack(a, b, c, d)
     stack = Stack()
-    stack.push('a')
-    stack.push('b')
-    stack.push('c')
-    stack.push('d')
+    stack.push("a")
+    stack.push("b")
+    stack.push("c")
+    stack.push("d")
 
     # check if each item in the stack returns proper index
-    assert stack.read(0) == 'd'
-    assert stack.read(1) == 'c'
-    assert stack.read(2) == 'b'
-    assert stack.read(3) == 'a'
+    assert stack.read(0) == "d"
+    assert stack.read(1) == "c"
+    assert stack.read(2) == "b"
+    assert stack.read(3) == "a"
 
     # insert 'e' into index 2 of the stack
-    stack.insert('e', 2)
-    assert stack.read(0) == 'd'
-    assert stack.read(1) == 'c'
-    assert stack.read(2) == 'e'
-    assert stack.read(3) == 'b'
-    assert stack.read(4) == 'a'
+    stack.insert("e", 2)
+    assert stack.read(0) == "d"
+    assert stack.read(1) == "c"
+    assert stack.read(2) == "e"
+    assert stack.read(3) == "b"
+    assert stack.read(4) == "a"
 
     # insert 'z' into index 5 of the stack
-    stack.insert('z', 5)
-    assert stack.read(0) == 'd'
-    assert stack.read(1) == 'c'
-    assert stack.read(2) == 'e'
-    assert stack.read(3) == 'b'
-    assert stack.read(4) == 'a'
-    assert stack.read(5) == 'z'
+    stack.insert("z", 5)
+    assert stack.read(0) == "d"
+    assert stack.read(1) == "c"
+    assert stack.read(2) == "e"
+    assert stack.read(3) == "b"
+    assert stack.read(4) == "a"
+    assert stack.read(5) == "z"

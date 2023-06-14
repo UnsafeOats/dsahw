@@ -17,20 +17,21 @@ def check_mirrored(s: str) -> bool:
     found_c = False
     output = True
     for char in s:
-        if (not found_c) and (char != 'C'):
+        if (not found_c) and (char != "C"):
             stack.push(char)
-        elif char == 'C':
+        elif char == "C":
             found_c = True
         else:
             if stack.pop() != char:
                 output = False
-    return output and stack.is_empty() # using 'and' here to validate stack is empty
+    return output and stack.is_empty()  # using 'and' here to validate stack is empty
+
 
 if __name__ == "__main__":
     print("Running test cases...")
-    assert check_mirrored('xCx') == True
-    assert check_mirrored('xyCyx') == True
-    assert check_mirrored('xyCy') == False
-    assert check_mirrored('xyCxy') == False
-    assert check_mirrored('xyyzaCazyyx') == True
-    assert check_mirrored('xyyzaCazyyu') == False
+    assert check_mirrored("xCx") == True
+    assert check_mirrored("xyCyx") == True
+    assert check_mirrored("xyCy") == False
+    assert check_mirrored("xyCxy") == False
+    assert check_mirrored("xyyzaCazyyx") == True
+    assert check_mirrored("xyyzaCazyyu") == False

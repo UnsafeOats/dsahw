@@ -8,11 +8,11 @@ from os import times, remove, path
 
 
 def read_block(block_path: str):
-    if block_path.endswith('.py'):
+    if block_path.endswith(".py"):
         print(f"Running tests for Python block: {block_path}")
-        run_tests = run(['python', block_path], capture_output=True)
+        run_tests = run(["python", block_path], capture_output=True)
         run_tests.check_returncode()
-    elif block_path.endswith('.pseudo'):
+    elif block_path.endswith(".pseudo"):
         print(f"Inserting pseudocode block without tests: {block_path}")
     with open(block_path, "r") as block:
         return block.read()
@@ -29,7 +29,9 @@ def build_assignment(assignment: str):
             for line in lines:
                 if line.strip().startswith("\\read_block{"):
                     block_name = line.split("{")[1].split("}")[0]
-                    parsed_lines.append(read_block(f"{normalized_assignment}/{block_name}"))
+                    parsed_lines.append(
+                        read_block(f"{normalized_assignment}/{block_name}")
+                    )
                 else:
                     parsed_lines.append(line)
         temp_file_name = f"{gettempdir()}/mdtopdf{hash(times())}.md"
@@ -41,7 +43,14 @@ def build_assignment(assignment: str):
         # Pandoc library because I don't want the build script to require any external
         # Pip dependencies.  This simplifies the build process as no one needs to create
         # and manage a virtual environment.
-        run_build = run(['pandoc', temp_file_name, '-o', f"assignments/{path.basename(md_file).split('.')[0]}.pdf"])
+        run_build = run(
+            [
+                "pandoc",
+                temp_file_name,
+                "-o",
+                f"assignments/{path.basename(md_file).split('.')[0]}.pdf",
+            ]
+        )
         run_build.check_returncode()
         remove(temp_file_name)
 
