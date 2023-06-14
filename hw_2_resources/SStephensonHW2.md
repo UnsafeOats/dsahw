@@ -90,7 +90,7 @@ A Python implementation of the above algorithm with some test cases is as follow
 ## Problem 4
 Within the below pseudo-code, the function named `check_each_section` takes an input string and returns `true` if it matches the pattern and `false` if there is a non-symmetric xCy substring.
 \small
-```
+```lua
 \read_block{problem4.pseudo}
 ```
 The below code is a slight modification and extension of the above Python code.  For this implementation, we use two stacks.  One stack collects everything inbetween the 'D's (the 'D-segments') and the second stack is used within the function to test if the extracted D-segment sequence stack represents a valid xCy mirrored string.  Again, test strings are asserted at the end.
