@@ -7,7 +7,7 @@ All code used in this assignment, the markdown files used to build this PDF, and
 ## Problem 1a
 Pseudo-code implementation.  In this, `i` is the element to insert at base of stack and `s` is the input stack:
 \small
-```
+```lua
 \read_block{problem1a.pseudo}
 ```
 \normalsize
@@ -15,7 +15,7 @@ Pseudo-code implementation.  In this, `i` is the element to insert at base of st
 
 ## Problem 1b
 Pseudo-code implementation.  In this, `i` is the element to insert in the third position of the stack and `s` is the input stack:
-```
+```lua
 \read_block{problem1b.pseudo}
 ```
 \newpage
@@ -75,7 +75,7 @@ After iterating through all characters, stack is empty so delimiters are properl
 ## Problem 3
 Pseudo-code implementation checking mirrored strings.  In this function, `w` is the input string in form xCy that will be tested for being mirrored:
 \small
-```
+```lua
 \read_block{problem3.pseudo}
 ```
 \normalsize
@@ -109,13 +109,13 @@ For both these functions, the input parameters `i` are the index to insert/read 
 In this implementation, the bottom of the stack will be indexed at 0 and will increase by increments of +1 for each additional element added to the stack.  Once the stack has been popped a number of times equivalent to the index, the element to insert is pushed onto the stack before moving everything from the secondary stack back onto the primary stack.
 The `read` function works similarly to the `insert` function, but it simply peeks once it gets to the appropriate index instead of pushing a new element onto the stack.
 \small
-```
+```lua
 \read_block{problem5.pseudo}
 ```
 Python implementation with test cases are shown below:
 \small
 ```python
-\read_block{problem5.pseudo}
+\read_block{problem5.py}
 ```
 \normalsize
 \newpage
@@ -123,7 +123,7 @@ Python implementation with test cases are shown below:
 ## Problem 6
 Need to come back to complete.
 \small
-```
+```lua
 \read_block{problem6.pseudo}
 ```
 \normalsize

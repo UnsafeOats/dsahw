@@ -20,6 +20,7 @@ foo@bar: ~$ python3 build.py assignment_1
 ```
 The output name of the generated PDF will match the name of your markdown file.
 
+To get syntax highlighting on the pseudo-code, I told markdown to treat it like `lua`.  While it's definitely not optimal, it does make the pseudo-ccode look better than no syntax highlighting.
 ## Requirements
 
 In order to use the build tool to create your PDF, you need to have the Pandoc CLI installed and an appropriate TeX renderer.  Additionally, you need a Python installation at least greater than 3.9.
