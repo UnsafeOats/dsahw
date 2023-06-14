@@ -1,0 +1,24 @@
+FUNCTION insert [e: ELEMENT, i: INDEX, s: STACK] -> STACK
+# function which uses a second stack to insert into another stack
+START insert
+  LET secondary_stack = INITIALIZE EMPTY STACK
+  FOR _ FROM 0 to i:
+    secondary_stack.push(s.pop)
+  s.push(e)
+  FOR _ FROM 0 to i:
+    s.push(secondary_stack.pop)
+  RETURN s
+END insert
+
+FUNCTION read [i: INDEX, s: STACK] -> STACK
+# This function works almost the same as 'insert', just
+# without doing the actual insertion
+START read
+  LET secondary_stack = INITIALIZE EMPTY STACK
+  FOR _ FROM 0 to i:
+    secondary_stack.push(s.pop)
+  LET output = s.read
+  FOR _ FROM 0 to i:
+    s.push(secondary_stack.pop)
+  RETURN output
+END read

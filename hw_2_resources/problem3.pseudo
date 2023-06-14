@@ -1,9 +1,9 @@
-FUNCTION INPUTS w: string -> OUTPUT bool
+FUNCTION [w: STRING] -> BOOLEAN
+START
   # string w is input string of format xCy
   LET stack = INITIALIZE EMPTY STACK
   LET found_c = FALSE
   LET output = TRUE
-
   FOR char IN w:
     IF NOT found_c AND char != 'C':
       stack.push(char)
@@ -12,6 +12,5 @@ FUNCTION INPUTS w: string -> OUTPUT bool
     ELSE:
       IF stack.pop != char:
         LET output = FALSE
-
   RETURN output
-
+END

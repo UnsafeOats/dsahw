@@ -1,13 +1,11 @@
-FUNCTION INPUTS i: element, s: stack -> OUTPUT stack
+FUNCTION [i: ELEMENT, s: STACK] -> STACK
+START
   # stack s is the input stack and i is the element to place at bottom
   LET s_0 = INITIALIZE EMPTY STACK
-
   WHILE s IS NOT EMPTY:
       s_0.push(s.pop) # pop from one stack and immediately move to second stack
-
   s.push(i)
-
   WHILE s_0 IS NOT EMPTY:
       s.push(s.pop)
-
   RETURN s
+END

@@ -1,7 +1,4 @@
 class Stack(list):
-    # This is just a wrapper class around Python lists to so that we can interact
-    # with the lists in a way that idiomatic of a stack with methods to push and check
-    # if the stack is empty.
     def __init__(self):
         super().__init__()
 
